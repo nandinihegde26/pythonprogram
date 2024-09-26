@@ -1,0 +1,53 @@
+def show(board, N):
+    for i in range(N):
+        for j in range(N):
+            if board[i][j] == 1:
+                print("Q ", end="")
+            else:
+                print(". ", end="")
+        print()
+
+def position(board, row, col, N):
+    for i in range(col):
+        if board[row][i] == 1:
+            return False
+    for i in range(row):
+        if board[i][col] == 1:
+            return False
+    for i in range(1, min(row, col) + 1):
+        if board[row - i][col - i] == 1:
+            return False
+    for i in range(1, min(N - row, col + 1)):
+        if board[row + i][col - i] == 1:
+            return False
+    for i in range(1, min(row + 1, N - col)):
+        if board[row - i][col + i] == 1:
+            return False
+    for i in range(1, min(N - row, N - col)):
+        if board[row + i][col + i] == 1:
+            return False
+    return True
+
+def main(N):
+    board = [[0 for _ in range(N)] for _ in range(N)]
+    for i in range(N):
+        while True:
+            row = int(input(f"Enter the row position for queen {i + 1} (0 to {N - 1}): "))
+            col = int(input(f"Enter the column position for queen {i + 1} (0 to {N - 1}): "))
+            if 0 <= row < N and 0 <= col < N:
+                if position(board, row, col, N):
+                    board[row][col] = 1
+                    break
+                else:
+                    print("Invalid position: This position is under attack. Please re-enter.")
+            else:
+                print(f"Invalid input: Please enter positions within the range 0 to {N - 1}.")
+
+    print("All positions are valid. The final board setup is:")
+    show(board, N)
+    return True
+
+if __name__ == '__main__':
+    N = int(input("Enter the size of the board (N): "))
+    main(N)
+

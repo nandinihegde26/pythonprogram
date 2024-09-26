@@ -1,0 +1,59 @@
+m1 = 3
+c1 = 3
+m2 = 0
+c2 = 0
+try:
+    while True:
+        while True:
+            print("b1 to b2")
+            m = int(input("Enter number of Man"))
+            c = int(input("Enter number of Cannibals"))
+
+            if m == 0 and c == 0:
+                print("empty boat")
+                print("enter:")
+            elif (m + c) <= 2 and (m1 - m) >= 0 and (c1 - c) >= 0:
+                break
+            else:
+                print("invalid re-enter : ")
+        m1 -= m
+        c1 -= c
+        m2 += m
+        c2 += c
+        print("\n")
+        print("b1:", "M" * m1, "C" * c1, "b2:","C" * c2, "M" * m2)
+        print("\n")
+
+        if ((c1 == 3 and m1 == 1) or (c1 == 3 and m1 == 2) or (c1 == 2 and m1 == 1)
+                or (c2 == 3 and m2 == 1) or (c2 == 3 and m2 == 2) or (c2 == 2 and m2 == 1)):
+            print("cannibals eat men")
+            break
+
+        if (m2 + c2) == 6:
+            print("won ")
+            break
+
+        while True:
+            print("b2 to b1 ")
+            m = int(input("Enter number of man  "))
+            c = int(input("Enter number of cannibals "))
+            if m == 0 and c == 0:
+                print("empty boat")
+                print("enter : ")
+            elif (m+c) <= 2 and (m2-m) >= 0 and (c2-c) >= 0:
+                break
+            else:
+                print("enter:")
+        m1 += m
+        c1 += c
+        m2 -= m
+        c2 -= c
+        print("\n")
+        print("b1:", "M" * m1, "C" * c1, "b2",  "M" * m2, "C" * c2,)
+        print("\n")
+        if ((c1 == 3 and m1 == 1) or (c1 == 3 and m1 == 2) or (c1 == 2 and m1 == 1)
+                or (c2 == 3 and m2 == 1) or (c2 == 3 and m2 == 2) or (c2 == 2 and m2 == 1)):
+            print("c eat m ")
+            break
+except ValueError:
+    print("Invalid")

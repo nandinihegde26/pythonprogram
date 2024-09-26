@@ -1,0 +1,39 @@
+a = int(input("enter jug A Capacity:"))
+b = int(input("enter jug B Capacity:"))
+c = int(input("start point A water :"))
+d = int(input("start point B water:"))
+e = int(input("f jug A:"))
+f = int(input("f jug B:"))
+print("Operations:\n")
+print("1.fill Jug A\n")
+print("2.fill Jug B\n")
+print("3.empty Jug A\n")
+print("4.empty Jug B\n")
+print("5.Pour From Jug A to Jug B \n")
+print("6.Pour From Jug B t Jug A \n")
+while ((c!=e or d!=f)):
+    op = int(input("enter: "))
+    if (op == 1):
+        c = a
+    elif (op == 2):
+        d = b
+    elif (op == 3):
+        c = 0
+    elif (op == 4):
+        d = 0
+    elif (op == 5):
+        if (b-d >c):
+            d = c+d
+            c = 0
+        else:
+            c = c-(b-d)
+            d = b
+    elif (op == 6):
+            if (a-c > d):
+                c = c+d
+                d = 0
+            else:
+                b = d-(a-c)
+                c = a
+    print(c, d)
+
